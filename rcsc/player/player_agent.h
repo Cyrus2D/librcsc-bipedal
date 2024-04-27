@@ -221,6 +221,11 @@ public:
     bool doDash( const double & power,
                  const AngleDeg & rel_dir = 0.0 );
 
+    bool doBipedalDash( const double& power_l,
+                        const AngleDeg& dir_l,
+                        const double& power_r,
+                        const AngleDeg& dir_r );
+
     /*!
       \brief register turn command
       \param moment command argument: turn moment

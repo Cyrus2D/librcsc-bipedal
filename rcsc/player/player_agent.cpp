@@ -2820,6 +2820,29 @@ PlayerAgent::doDash( const double & power,
     return true;
 }
 
+bool
+PlayerAgent::doBipedalDash( const double& power_l,
+                            const AngleDeg& dir_l,
+                            const double& power_r,
+                            const AngleDeg& dir_r )
+{
+    if ( world().self().isFrozen() )
+    {
+        dlog.addText( Logger::ACTION,
+                      __FILE__": agent->doBipedalDash. but in tackle expire period  %d",
+                      world().self().tackleExpires() );
+        std::cerr << world().teamName() << ' '
+                  << world().self().unum() << ": "
+                  << world().time()
+                  << " Now Tackle expire period" << std::endl;
+        return false;
+    }
+
+    M_effector.setBipedalDash( power_l, dir_l, power_r, dir_r );
+    return true;
+}
+
+
 /*-------------------------------------------------------------------*/
 /*!
 

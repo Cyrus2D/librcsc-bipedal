@@ -911,6 +911,18 @@ ActionEffector::setDash( const double & power,
                   accel_mag, accel_angle.degree() );
 }
 
+void
+ActionEffector::setBipedalDash(const double& power_l,
+                               const AngleDeg& dir_l,
+                               const double& power_r,
+                               const AngleDeg& dir_r)
+{
+    M_command_body = new PlayerBipedalDashCommand(power_l, dir_l.degree(), power_r, dir_r.degree());
+    dlog.addText(Logger::SYSTEM,
+                 __FILE__" (setBipedalDash) power_l=%.3f dir_l=%.3f power_r=%.3f dir_r=%.3f",
+                 power_l, dir_l.degree(), power_r, dir_r.degree());
+}
+
 /*-------------------------------------------------------------------*/
 /*!
 

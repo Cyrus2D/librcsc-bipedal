@@ -30,3 +30,6 @@ rclmscheduler
 rclmtableprinter
 stamp-h1
 tmp
+
+build/
+.vscode/

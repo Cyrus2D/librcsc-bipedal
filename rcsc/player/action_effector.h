@@ -265,6 +265,11 @@ public:
     void setDash( const double & power,
                   const AngleDeg & rel_dir );
 
+    void setBipedalDash( const double& power_l,
+                         const AngleDeg& dir_l,
+                         const double& power_r,
+                         const AngleDeg& dir_r );
+
     /*!
       \brief create turn command and its effect with turn parameter
       \param moment turn moment that player wants to perform

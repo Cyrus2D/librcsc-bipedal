@@ -465,6 +465,74 @@ public:
       }
 };
 
+class PlayerBipedalDashCommand
+    : public PlayerBodyCommand {
+private:
+    double M_power_l; //!< dash power
+    double M_dir_l; //!< dash direction
+    double M_power_r; //!< dash power
+    double M_dir_r;
+public:
+    /*!
+      \brief construct with dash power
+      \param power dash power
+      \param dir dash direction
+    */
+    explicit
+    PlayerBipedalDashCommand( const double & power_l,
+                              const double & dir_l,
+                              const double & power_r,
+                              const double & dir_r )
+        : M_power_l( power_l ),
+          M_dir_l( dir_l ),
+          M_power_r( power_r ),
+          M_dir_r( dir_r )
+      { }
+
+    /*!
+      \brief get command type
+      \return command type Id
+    */
+    Type type() const
+      {
+          return DASH;
+      }
+
+    /*!
+      \brief put command string to ostream
+      \param to reference to the output stream
+      \return reference to the output stream
+    */
+    std::ostream & toCommandString( std::ostream & to ) const;
+
+    /*!
+      \brief get command name
+      \return command name string
+    */
+    std::string name() const
+      {
+          return std::string( "bipedalDash" );
+      }
+
+    /*!
+      \brief get dash command parameter
+      \return dash power
+     */
+    double dashPower() const
+      {
+          return (M_power_l + M_power_r)/2.;
+      }
+
+    /*!
+      \brief get dash command parameter
+      \return dash direction
+     */
+    double dashDir() const
+      {
+          return (M_dir_l + M_dir_r)/2.;
+      }
+};
+
 //////////////////////////////////////////////////////////////////////
 /*!
   \class PlayerTurnCommand

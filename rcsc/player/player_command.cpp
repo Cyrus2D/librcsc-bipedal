@@ -142,6 +142,13 @@ PlayerDashCommand::toCommandString( std::ostream & to ) const
     return to << ')';
 }
 
+std::ostream &
+PlayerBipedalDashCommand::toCommandString( std::ostream & to ) const
+{
+    to << "(dash (l " << M_power_l << " " << M_dir_l << ") (r " << M_power_r << " " << M_dir_r << "))";
+    return to;
+}
+
 /*-------------------------------------------------------------------*/
 /*!
 
